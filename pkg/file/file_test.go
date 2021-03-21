@@ -14,7 +14,7 @@ import (
 func TestDirwalk(t *testing.T) {
 	paths := file.Dirwalk("./test")
 	sort.Strings(paths)
-	actualPaths := []string{"test/a", "test/b", "test/c.txt", "test/d.log", "test/e.txt"}
+	actualPaths := []string{"test/a", "test/b", "test/c.txt", "test/d.log", "test/e.txt", "test/f.h"}
 	sort.Strings(actualPaths)
 
 	assert.Equal(t, actualPaths, paths, "pass")
@@ -23,16 +23,16 @@ func TestDirwalk(t *testing.T) {
 func TestGetExtList(t *testing.T) {
 	actualExt := []string{"txt", "log", "other"}
 	sort.Strings(actualExt)
-	paths := []string{"test/a", "test/b", "test/c.txt", "test/d.log", "test/e.txt"}
+	paths := []string{"test/a", "test/b", "test/c.txt", "test/d.log", "test/e.txt", "test/f.h"}
 	ext := file.GetExtList(paths)
 	sort.Strings(ext)
 	assert.Equal(t, actualExt, ext, "pass")
 }
 
 func TestSort(t *testing.T) {
-	actualResult := []string{"test/output/other/a", "test/output/other/b", "test/output/txt/c.txt", "test/output/log/d.log", "test/output/txt/e.txt"}
+	actualResult := []string{"test/output/other/a", "test/output/other/b", "test/output/txt/c.txt", "test/output/log/d.log", "test/output/txt/e.txt", "test/output/other/f.h"}
 
-	paths := []string{"test/a", "test/b", "test/c.txt", "test/d.log", "test/e.txt"}
+	paths := []string{"test/a", "test/b", "test/c.txt", "test/d.log", "test/e.txt", "test/f.h"}
 	rootDir := "./test"
 	extList := []string{"txt", "log", "other"}
 	file.Sort(paths, rootDir, extList)

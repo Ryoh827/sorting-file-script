@@ -50,7 +50,8 @@ func GetExtList(paths []string) []string {
 
 func GetExt(path string) string {
 	ext := filepath.Ext(path)
-	if ext == "" {
+	fInfo, _ := os.Stat(path)
+	if ext == "" || fInfo.IsDir() {
 		return ""
 	}
 	return ext[1:]

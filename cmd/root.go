@@ -17,5 +17,5 @@ func Init() {
 	paths := file.Dirwalk(rootDir)
 	extList := file.GetExtList(paths)
 
-	extList = append(extList, "other")
+	file.Sort(paths, rootDir, extList)
 }
